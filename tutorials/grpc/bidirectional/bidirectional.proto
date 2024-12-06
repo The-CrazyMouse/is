@@ -1,0 +1,15 @@
+syntax = "proto3"; // Specifies the Protocol Buffers version (proto3)
+
+package bidirectional; // Defines the namespace for the service
+
+service Bidirectional {
+  // Defines a Bidirectional streaming RPC method.
+  // - "GetServerResponse" accepts a stream of "Message" objects from the
+  // client.
+  // - It also returns a stream of "Message" objects back to the client.
+  rpc GetServerResponse(stream Message) returns (stream Message) {}
+}
+
+message Message {
+  string message = 1; // A simple message containing a string field
+}

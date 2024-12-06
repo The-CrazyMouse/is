@@ -1,0 +1,32 @@
+syntax = "proto3"; // Specifies the Protocol Buffers version used (proto3 is the
+                   // latest version).
+
+package unary; // Groups related code into a namespace to avoid naming conflicts.
+
+service Unary {
+  // Defines the Unary gRPC service.
+  // Contains RPC methods that the server will implement.
+
+  rpc GetServerResponse(Message) returns (MessageResponse) {}
+  // Defines a simple Remote Procedure Call (RPC) method.
+  // - "GetServerResponse" is the name of the method.
+  // - Takes a "Message" as input (request).
+  // - Returns a "MessageResponse" as output (response).
+}
+
+message Message {
+  string message = 1;
+  // Represents the client request.
+  // Contains one field: a string "message".
+  // "1" indicates the field number, which is used for serialization.
+}
+
+message MessageResponse {
+  string message = 1;
+  // The server response message content.
+  // Contains the same "message" field as the request.
+
+  bool received = 2;
+  // A boolean field indicating whether the message was successfully received.
+  // "2" is the field number for this additional field.
+}

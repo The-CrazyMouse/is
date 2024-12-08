@@ -10,9 +10,9 @@ def hello_worl():
 @app.route('/db')
 def db_connect():
     connection = mysql.connector.connect(
-        host='db'
-        user='root'
-        password='root_password'
+        host='db',
+        user='root',
+        password='root_password',
         database='meu_database'
     )
     cursor = connection.cursor()
@@ -20,5 +20,5 @@ def db_connect():
     result = cursor.fetchone()
     return result[0]
 
-if __name__ == '__name__':
+if __name__ == '__main__':
     app.run(host='0.0.0.0')
